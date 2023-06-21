@@ -28,6 +28,24 @@ public class DataBase {
         return null;
     }
 
+    public void update(long id, String name){
+        for (Product product : db) {
+            if (product.getId() == id) {
+                product.setName(name);
+                break;
+            }
+        }
+    }
+
+    public void delete(long id){
+        for (Product product : db) {
+            if (product.getId() == id) {
+                db.remove(product);
+                break;
+            }
+        }
+    }
+
     public void clear() {
         db.clear();
     }

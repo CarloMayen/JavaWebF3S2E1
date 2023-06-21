@@ -29,6 +29,7 @@ public class DataBaseTest {
     }
 
     @Test
+    @DisplayName("DataBase can read data.")
     void testGetById() {
         db.insert(new Product(1, "Product 1"));
         db.insert(new Product(2, "Product 2"));
@@ -41,6 +42,7 @@ public class DataBaseTest {
     }
 
     @Test
+    @DisplayName("DataBase can delete data.")
     void testClear() {
         db.insert(new Product(1, "Product 1"));
         db.insert(new Product(2, "Product 2"));
@@ -49,5 +51,28 @@ public class DataBaseTest {
         assertEquals(4, db.size());
         db.clear();
         assertEquals(0, db.size());
+    }
+
+    @Test
+    @DisplayName("DataBase can update data.")
+    void testUpdate() {
+        db.insert(new Product(1, "Product 1"));
+        db.insert(new Product(2, "Product 2"));
+        db.insert(new Product(3, "Product 3"));
+        db.insert(new Product(4, "Product 4"));
+        db.update(2, "Producto dos");
+        assertEquals("Producto dos", db.getById(2).getName());
+    }
+
+    @Test
+    @DisplayName("DataBase can delete data by id.")
+    void testDelete() {
+        db.insert(new Product(1, "Product 1"));
+        db.insert(new Product(2, "Product 2"));
+        db.insert(new Product(3, "Product 3"));
+        db.insert(new Product(4, "Product 4"));
+        assertEquals(4, db.size());
+        db.delete(3);
+        assertEquals(3, db.size());
     }
 }
