@@ -4,7 +4,7 @@ name: Integracion continua
 # Los pasos a ejecutar
 jobs:
   build-test:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Clonar el repositorio
